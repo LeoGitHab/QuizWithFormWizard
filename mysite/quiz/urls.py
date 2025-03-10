@@ -6,6 +6,7 @@ from quiz.views import category_list, TicketsWizard
 
 urlpatterns = [
     path('', category_list, name='category_list'),
-    path('ticket/', TicketsWizard.as_view([AnswerForm, AnswerForm]), name='ticket'),
+    # path('ticket/<int:pk>/', TicketsWizard.as_view([AnswerForm, AnswerForm]), name='ticket'),
+    path('ticket/<int:pk>/', TicketsWizard.as_view(), name='ticket'),
 
 ]

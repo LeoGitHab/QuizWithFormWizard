@@ -29,14 +29,14 @@ class TicketsWizard(SessionWizardView):
         # pk = self.request.GET['pk']
         # print('pk = ', pk)
 
-        form_list = super().get_form_list()
-        queryset = Question.objects.filter(category_id=1).first().all()
+        # form_list = super().get_form_list()
+        queryset = Question.objects.filter(category_id=self.request.GET['pk']).all()
         print('queryset = ', queryset)
 
         for num, item in enumerate(queryset):
-            form_list[num] = AnswerForm
+            self.form_list[num] = AnswerForm
 
-        return form_list
+        return super().get_form_list()
 
 
     def done(self, form_list, **kwargs):
