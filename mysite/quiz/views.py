@@ -21,16 +21,14 @@ def category_list(request: HttpRequest):
 
 
 class TicketsWizard(SessionWizardView):
-    form_list = []
+    form_list = [AnswerForm,]
     template_name = 'ticket.html'
-    # category = Category.objects.get(id=pk)
 
     def get_form_list(self):
-        # pk = self.request.GET['pk']
-        # print('pk = ', pk)
+        pk = self.request.POST.get('pk', False)
+        print('pk = ', pk)
 
-        # form_list = super().get_form_list()
-        queryset = Question.objects.filter(category_id=self.request.GET['pk']).all()
+        queryset = Question.objects.filter(category_id=1).all()
         print('queryset = ', queryset)
 
         for num, item in enumerate(queryset):
